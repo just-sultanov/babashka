@@ -282,7 +282,8 @@
         tasks (get bb-edn :tasks)
         enter (:enter tasks)
         leave (:leave tasks)
-        task (get tasks task-name)]
+        task (or (get tasks task-name)
+                 (:default tasks))]
     (binding [*print-meta* true]
       (if task
         (let [m? (map? task)
